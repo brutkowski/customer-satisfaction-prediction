@@ -28,7 +28,6 @@ stages:
       application: ${CF_APP}
     script: |-
       #!/bin/bash
-      echo `cf target`
       echo appName "${CF_APP}"
       serviceId=`echo ${CF_APP} | awk '{print substr($0, 12)}'`
       echo serviceId "${serviceId}"
