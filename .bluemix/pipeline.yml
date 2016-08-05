@@ -20,7 +20,8 @@ stages:
       export PATH=/opt/IBM/node-v4.2/bin:$PATH
       npm install
       ls -l
-      cp ./* ./output
+      echo $ARCHIVE_DIR
+      cp ./* ./$ARCHIVE_DIR
 - name: Deploy Stage
   inputs:
   - type: job
