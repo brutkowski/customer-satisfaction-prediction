@@ -1,5 +1,5 @@
 applications:
 - name:    customer-satisfaction-prediction
-  memory:  128M
+  memory:  256M
   services:
   - @pa_service_instance_name@
