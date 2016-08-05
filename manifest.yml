@@ -1,6 +1,5 @@
 applications:
 - name:    customer-satisfaction-prediction
-  host:    predict-satisfaction
   memory:  128M
   services:
   - @pa_service_instance_name@
