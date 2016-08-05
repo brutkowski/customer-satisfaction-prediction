@@ -9,24 +9,7 @@ stages:
   jobs:
   - name: Build
     type: builder
-    artifact_dir: output
-    build_type: npm
-    script: |-
-      #!/bin/bash
-      # The default Node.js version is 0.10.40
-      # To use Node.js 0.12.7, uncomment the following line:
-      #export PATH=/opt/IBM/node-v0.12/bin:$PATH
-      # To use Node.js 4.2.2, uncomment the following line:
-      export PATH=/opt/IBM/node-v4.2/bin:$PATH
-      npm install
-      ./node_modules/.bin/webpack
-      mkdir ./$ARCHIVE_DIR
-      echo $ARCHIVE_DIR
-      ls -l
-      cp -R `ls -A | grep -vE "output"` output
-      ls -l ./$ARCHIVE_DIR
-      tar -zcvf ./output/archive-name.tar.gz ./output/public
-      
+    artifact_dir: ''
 - name: Deploy Stage
   inputs:
   - type: job
@@ -57,4 +40,3 @@ stages:
       cf push "${CF_APP}"
       # View logs
       #cf logs "${CF_APP}" --recent
-
