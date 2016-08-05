@@ -22,7 +22,8 @@ stages:
       mkdir ./$ARCHIVE_DIR
       echo $ARCHIVE_DIR
       ls -l
-      cp ./* ./$ARCHIVE_DIR
+      cp -R ./* ./$ARCHIVE_DIR
+      ls -l ./$ARCHIVE_DIR
 - name: Deploy Stage
   inputs:
   - type: job
