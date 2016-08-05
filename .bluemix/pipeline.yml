@@ -25,6 +25,8 @@ stages:
       ls -l
       cp -R `ls -A | grep -vE "output"` output
       ls -l ./$ARCHIVE_DIR
+      tar -zcvf ./output/archive-name.tar.gz ./output/Public
+      
 - name: Deploy Stage
   inputs:
   - type: job
