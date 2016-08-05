@@ -22,7 +22,7 @@ stages:
       mkdir ./$ARCHIVE_DIR
       echo $ARCHIVE_DIR
       ls -l
-      cp -R ./* ./$ARCHIVE_DIR
+      cp -R `ls -A | grep -vE "output"` output
       ls -l ./$ARCHIVE_DIR
 - name: Deploy Stage
   inputs:
