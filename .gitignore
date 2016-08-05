@@ -1,5 +1,3 @@
 .project
-node_modules
 manifest.yml
-public/build/*
 config/local.json
