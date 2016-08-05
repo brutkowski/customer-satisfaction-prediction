@@ -19,6 +19,8 @@ stages:
       # To use Node.js 4.2.2, uncomment the following line:
       export PATH=/opt/IBM/node-v4.2/bin:$PATH
       npm install
+      ls -l
+      cp ./* ./output
 - name: Deploy Stage
   inputs:
   - type: job
