@@ -33,9 +33,9 @@ stages:
       echo serviceId "${serviceId}"
       serviceJson=`cf curl /v2/service_instances/${serviceId}`
       echo serviceJson "${serviceJson}"
-      errorCode=`echo ${serviceJson} | grep -Po '(?<="error_code": ")[^"]*'`
-      echo errorCode "${errorCode}"
-      if [[ -z $errorCode ]]
+      code=`echo ${serviceJson} | grep -Po '(?<="error_code": ")[^"]*'`
+      echo errorCode "${code}"
+      if [[ -z $code ]]
       then
         serviceName=`echo ${serviceJson} | grep -Po '(?<="name": ")[^"]*'`
         echo serviceName "${serviceName}"
