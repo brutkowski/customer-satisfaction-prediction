@@ -42,7 +42,7 @@ stages:
         sed -i '$ a \  services:' manifest.yml
         sed -i "$ a \  - ${serviceName}" manifest.yml
       else
-        echo "The problem occured when retrieving the serviceName. The service will not be bind to app."
+        echo "The problem occured when retrieving the serviceName. The service will not be bind to the app."
       fi
       cat manifest.yml
       cf push "${CF_APP}"
