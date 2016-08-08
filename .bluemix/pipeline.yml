@@ -35,8 +35,8 @@ stages:
       echo serviceJson "${serviceJson}"
       serviceName=`echo ${serviceJson} | grep -Po '(?<="name": ")[^"]*'`
       echo serviceName "${serviceName}"
-      sed -i '$ a  services:' manifest.yml
-      sed -i "$ a  -${serviceName}" manifest.yml
+      sed -i '$ a \ services:' manifest.yml
+      sed -i "$ a \ -${serviceName}" manifest.yml
       cat manifest.yml
       cf push "${CF_APP}"
       # View logs
