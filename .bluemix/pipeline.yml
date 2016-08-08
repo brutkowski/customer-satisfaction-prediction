@@ -33,7 +33,7 @@ stages:
       echo serviceId "${serviceId}"
       serviceJson=`cf curl /v2/service_instances/${serviceId}`
       echo serviceJson "${serviceJson}"
-      erroCode=`echo ${serviceJson} | grep -Po '(?<="error_code": ")[^"]*'`
+      errorCode=`echo ${serviceJson} | grep -Po '(?<="error_code": ")[^"]*'`
       echo errorCode "${errorCode}"
       if [[ -z $errorCode ]]
       then
