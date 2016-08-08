@@ -21,7 +21,6 @@ stages:
   - name: Deploy to dev
     type: deployer
     target:
-      region_id: ibm:yp:us-south
       url: ${CF_TARGET_URL}
       organization: ${CF_ORGANIZATION}
       space: ${CF_SPACE}
