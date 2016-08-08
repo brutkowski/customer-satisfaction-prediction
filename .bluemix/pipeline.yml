@@ -33,23 +33,19 @@ stages:
       echo serviceId "${serviceId}"
       serviceJson=`cf curl /v2/service_instances/${serviceId}`
       echo serviceJson "${serviceJson}"
-      echo ${serviceJson} | grep "error_code"
-      exitStatus=$?
-      echo exitStatus ${exitStatus}
-      if [ $exitStatus -e 0 ]
+      errorCode=`${serviceJson} | grep -Po '(?<="error_code": ")[^"]*' || true` 
+      echo errorCode ${errorCode}
+      if [[ -z $errorCode ]]
       then
-        echo ${serviceJson} | grep -Po '(?<="name": ")[^"]*'
-        exitStatus=$?
-        echo exitStatus ${exitStatus}
-        if [ $exitStatus -e 0 ]
-        then
-         serviceName=`echo ${serviceJson} | grep -Po '(?<="name": ")[^"]*'`
-         echo serviceName "${serviceName}"
-         sed -i '$ a \  services:' manifest.yml
-         sed -i "$ a \  - ${serviceName}" manifest.yml
-        else
+       serviceName=`echo ${serviceJson} | grep -Po '(?<="name": ")[^"]*' || true`
+       echo serviceName "${serviceName}"
+       if [[ ! -z $errorCode ]]
+       then
+        sed -i '$ a \  services:' manifest.yml
+        sed -i "$ a \  - ${serviceName}" manifest.yml
+       else
          echo "The problem occured when retrieving the serviceName. The service will not be bind to the app."
-        fi 
+       fi 
       else
         echo "The problem occured when retrieving the serviceName. The service will not be bind to the app."
       fi
