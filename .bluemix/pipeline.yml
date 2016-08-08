@@ -49,6 +49,7 @@ stages:
       else
         echo "The problem occured when retrieving the serviceName. The service will not be bind to the app."
       fi
+      echo manifest.yml
       cat manifest.yml
       cf push "${CF_APP}"
       # View logs
