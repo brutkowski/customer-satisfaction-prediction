@@ -39,7 +39,7 @@ stages:
       then
        serviceName=`echo ${serviceJson} | grep -Po '(?<="name": ")[^"]*' || true`
        echo serviceName "${serviceName}"
-       if [[ ! -z $errorCode ]]
+       if [[ ! -z $serviceName ]]
        then
         sed -i '$ a \  services:' manifest.yml
         sed -i "$ a \  - ${serviceName}" manifest.yml
